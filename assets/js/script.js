@@ -1,8 +1,5 @@
-// Display Date
-$("#currentDay").text(moment().format("dddd, MMMM Do YYYY"));
+$("#currentDay").text(moment().format("dddd, MMMM Do YYYY")); // Display Date at the top
 
-// Time Audit Start
-// Time Audit Function
 var timeAudit = function (taskEl) {
     var hour = taskEl.attr("id");
     var time = moment(hour, "HH a");
@@ -19,39 +16,34 @@ var timeAudit = function (taskEl) {
         taskEl.addClass("past");
     }
 }
-
-// Audit On Page Load
+//checking on page load
 $(".task-box").each(function () {
     timeAudit($(this));
 })
 
-// Audit On Every Hour
 setInterval(function () {
-    if (moment().minutes() === 0) { // IF the time is on the hour
+    if (moment().minutes() === 0) { // for every hour
         $(".task-box").each(function () {
             timeAudit($(this));
         })
     }
-}, (1000 * 60)) // check every minute
-// Time Audit End
+}, (1000 * 60)) // Checking every minute
 
-// Save and Load Start
-// Save (on save button click)
+// Save on button click
 $("i").on("click", function () {
-    var taskId = $(this) // get task id
+    var taskId = $(this) 
         .closest(".row")
         .find(".task-box")
         .attr("id")
-    var taskText = $(this) // get task text
+    var taskText = $(this)
         .closest(".row")
         .find(".task-box")
         .val()
-    localStorage.setItem(taskId, taskText); // save text by id
+    localStorage.setItem(taskId, taskText); 
 });
-
-// Load (on page load)
+// display on page load
 $(".task-box").each(function () {
-    var taskId = $(this).attr("id") // get task id
-    var savedTask = localStorage.getItem(taskId); // get saved task
-    $(this).val(savedTask) // load saved task
+    var taskId = $(this).attr("id") 
+    var savedTask = localStorage.getItem(taskId);
+    $(this).val(savedTask)
 })
