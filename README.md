@@ -18,4 +18,4 @@
 * Active Site:  [link to Scheduler](https://koneruteja.github.io/Scheduler/)
 
 ## Image
-* ![Image of work-scheduler](./assets/images/Scheduler.jpg
+* ![Image of work-scheduler](./assets/images/Scheduler.jpg)
